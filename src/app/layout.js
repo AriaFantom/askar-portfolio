@@ -1,7 +1,18 @@
-import { Inter } from "next/font/google";
+import { Staatliches, Tauri } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const staat = Staatliches({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-staatliches",
+});
+const tauri = Tauri({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-tauri",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +22,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`bg-background ${staat.variable} ${tauri.variable}`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
